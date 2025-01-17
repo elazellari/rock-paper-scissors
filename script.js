@@ -52,16 +52,19 @@ function playRound(humanChoice, computerChoice) {
     if (humanChoice == "rock" && computerChoice == "paper") {
         console.log("COMPUTER WINS");
         computerScore++;
+      
     }
 
     else if (humanChoice == "rock" && computerChoice == "scissors") {
         console.log("YOU WIN");
         humanScore++;
+  
     }
 
     else if (humanChoice == "paper" && computerChoice == "rock") {
         console.log("YOU WIN");
         humanScore++;
+       
     }
     else if (humanChoice == "paper" && computerChoice == "scissors") {
         console.log("COMPUTER WINS");
@@ -75,23 +78,24 @@ function playRound(humanChoice, computerChoice) {
         console.log("YOU WIN");
         humanScore++;
     }
-    else {
+    else if (humanChoice === computerChoice){
         console.log("IT'S A TIEEE");
+    }
+    else {
+        console.log("INVALID PICK");
     }
  
 };
 
 
-
-
 function playGame() {
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
+    
+    for (i = 0; i < 5; i++) {
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice(); 
     playRound(humanSelection, computerSelection);
     console.log(`Computer Score: ${computerScore} and Human Score ${humanScore}`);
-
+}
 
 if (computerScore > humanScore) {
     console.log("Computer Wins")
