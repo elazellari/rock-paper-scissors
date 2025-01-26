@@ -30,6 +30,17 @@ function getComputerChoice() {
 
 //function logic to play one round of the game
 function playRound(humanChoice, computerChoice) {
+//modified version
+
+if (computerScore == 5) {
+    score.textContent = `Computer Score: ${computerScore} Human Score: ${humanScore}  COMPUTER WINS`;
+}
+
+else if (humanScore == 5) {
+    score.textContent = `Computer Score: ${computerScore} Human Score: ${humanScore}  YOU WIN`;
+}
+
+else {
 
     if (humanChoice === "rock" && computerChoice == "paper") {
         console.log("Computer Wins");
@@ -68,14 +79,14 @@ function playRound(humanChoice, computerChoice) {
     }
 
     score.textContent = `Computer Score: ${computerScore} Human Score: ${humanScore}`;
- 
+}
 };
 
 
 function playGame() {
 
 rock.addEventListener("click", () => {
-    playRound("rock", getComputerChoice());
+ playRound("rock", getComputerChoice());
 });
 paper.addEventListener("click", () => {
  playRound("paper", getComputerChoice());
@@ -84,10 +95,6 @@ scissors.addEventListener("click", () => {
  playRound("scissors", getComputerChoice());
 });
 
-}
-
-function play() {
-    
 }
 
 
