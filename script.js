@@ -1,10 +1,3 @@
-//Function to generate a random computer choice and print the result
-/*Choice:
-Rock = 0
-Paper = 1
-Scissors = 2
-*/
-
 //Initalizing human and computer score
 let humanScore = 0;
 let computerScore = 0;
@@ -30,17 +23,6 @@ function getComputerChoice() {
 
 //function logic to play one round of the game
 function playRound(humanChoice, computerChoice) {
-//modified version
-
-if (computerScore == 5) {
-    score.textContent = `Computer Score: ${computerScore} Human Score: ${humanScore}  COMPUTER WINS`;
-}
-
-else if (humanScore == 5) {
-    score.textContent = `Computer Score: ${computerScore} Human Score: ${humanScore}  YOU WIN`;
-}
-
-else {
 
     if (humanChoice === "rock" && computerChoice == "paper") {
         console.log("Computer Wins");
@@ -79,23 +61,48 @@ else {
     }
 
     score.textContent = `Computer Score: ${computerScore} Human Score: ${humanScore}`;
-}
 };
 
+    function rockClick ()  { 
+    playRound("rock", getComputerChoice());
+    playGame();   
+   };
 
-function playGame() {
+    function paperClick (){
+    playRound("paper", getComputerChoice());
+    playGame();
+   };
+   
+    function scissorsClick () {
+    playRound("scissors", getComputerChoice());
+    playGame();
+   };
 
-rock.addEventListener("click", () => {
- playRound("rock", getComputerChoice());
-});
-paper.addEventListener("click", () => {
- playRound("paper", getComputerChoice());
-});
-scissors.addEventListener("click", () => {
- playRound("scissors", getComputerChoice());
-});
+   function playGame() {
 
+    if (computerScore == 5) {
+        score.textContent = `Computer Score: ${computerScore} Human Score: ${humanScore}  COMPUTER WINS`;
+    gameOver();
+    return;
+    }
+    
+    else if (humanScore == 5) {
+        score.textContent = `Computer Score: ${computerScore} Human Score: ${humanScore}  YOU WIN`;
+    gameOver();
+    return;
+    }
+    
 }
 
+   rock.addEventListener("click", rockClick);
+   paper.addEventListener("click", paperClick);
+   scissors.addEventListener("click", scissorsClick);
 
-addEventListener("DOMContentLoaded", playGame ());
+   function gameOver() {
+    rock.removeEventListener("click", rockClick);
+    paper.removeEventListener("click", paperClick);
+    scissors.removeEventListener("click", scissorsClick);
+   }
+
+
+
